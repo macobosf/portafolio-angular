@@ -1,0 +1,114 @@
+<!-- ===================== HERO ===================== -->
+<section
+  class="hero min-h-[calc(100vh-64px)] bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500"
+  aria-labelledby="hero-heading"
+>
+  <div class="hero-content text-center py-20 px-4">
+    <div class="max-w-3xl">
+      <span class="badge badge-outline border-white/40 text-white mb-6 px-4 py-3 text-sm">
+        ✦ Disponible para proyectos
+      </span>
+      <h1 id="hero-heading" class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">
+        Hola, soy <span class="text-yellow-300">Marco Cobos</span>
+      </h1>
+      <p class="text-lg md:text-2xl text-blue-100 mb-3">
+        Especialista en Redes &amp; Desarrollador Web
+      </p>
+      <div class="flex flex-wrap justify-center gap-2 mb-8" role="list" aria-label="Tecnologías principales">
+        <span class="badge badge-lg bg-white/20 text-white border-white/30" role="listitem">Mikrotik</span>
+        <span class="badge badge-lg bg-white/20 text-white border-white/30" role="listitem">Cisco</span>
+        <span class="badge badge-lg bg-white/20 text-white border-white/30" role="listitem">Angular</span>
+        <span class="badge badge-lg bg-white/20 text-white border-white/30" role="listitem">TypeScript</span>
+        <span class="badge badge-lg bg-white/20 text-white border-white/30" role="listitem">Node.js</span>
+      </div>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a routerLink="/proyectos" class="btn btn-warning btn-lg shadow-lg">
+          Ver proyectos
+        </a>
+        <a
+          routerLink="/solicitud"
+          class="btn btn-lg btn-outline text-white border-white/60 hover:bg-white hover:text-blue-900"
+        >
+          Contactarme
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROGRAMADOR ===================== -->
+<section class="py-16 bg-base-200" aria-labelledby="about-heading">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 id="about-heading" class="text-3xl font-bold">Sobre mí</h2>
+      <p class="text-base-content/60 mt-2">Conoce mi perfil profesional</p>
+    </div>
+    <div class="flex justify-center">
+      <div class="w-full max-w-sm">
+        <app-programmer-card [programmer]="programmer" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICIOS ===================== -->
+<section class="py-16 bg-base-100" aria-labelledby="services-heading">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 id="services-heading" class="text-3xl font-bold">Servicios</h2>
+      <p class="text-base-content/60 mt-2">¿En qué puedo ayudarte?</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      @for (service of services; track service.id) {
+        <app-service-card [service]="service" />
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROYECTOS DESTACADOS ===================== -->
+<section class="py-16 bg-base-200" aria-labelledby="projects-heading">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between mb-10">
+      <div>
+        <h2 id="projects-heading" class="text-3xl font-bold">Proyectos destacados</h2>
+        <p class="text-base-content/60 mt-1">Lo más relevante de mi portafolio</p>
+      </div>
+      <a routerLink="/proyectos" class="btn btn-outline btn-sm hidden md:inline-flex">
+        Ver todos
+        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      @for (project of featuredProjects; track project.id) {
+        <app-project-card [project]="project" />
+      }
+    </div>
+    <div class="text-center mt-8 md:hidden">
+      <a routerLink="/proyectos" class="btn btn-outline btn-sm">Ver todos los proyectos</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA CONTACTO ===================== -->
+<section class="py-16 bg-primary text-primary-content" aria-labelledby="cta-heading">
+  <div class="container mx-auto px-4 text-center">
+    <h2 id="cta-heading" class="text-3xl font-bold mb-3">¿Tienes un proyecto en mente?</h2>
+    <p class="text-primary-content/80 mb-8 max-w-xl mx-auto text-lg">
+      Cuéntame sobre tu proyecto de redes o desarrollo web y encontraremos la mejor solución juntos.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a routerLink="/solicitud" class="btn btn-warning btn-lg shadow">
+        Enviar solicitud
+      </a>
+      <a
+        href="mailto:marcocobos15@gmail.com"
+        class="btn btn-lg btn-outline text-white border-white/60 hover:bg-white hover:text-primary"
+      >
+        Escribir email
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+<article class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+  <figure class="overflow-hidden">
+    <img
+      [src]="project().imagen"
+      [alt]="'Imagen del proyecto ' + project().nombre"
+      class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+      loading="lazy"
+    />
+  </figure>
+  <div class="card-body p-5">
+    <div class="flex items-start justify-between gap-2">
+      <h3 class="card-title text-base leading-tight">{{ project().nombre }}</h3>
+      <span
+        class="badge badge-sm shrink-0"
+        [class.badge-primary]="project().tipo === 'laboral'"
+        [class.badge-secondary]="project().tipo === 'personal'"
+        [class.badge-accent]="project().tipo === 'academico'"
+        [class.badge-neutral]="project().tipo === 'simulado'"
+      >
+        {{ project().tipo }}
+      </span>
+    </div>
+    <p class="text-sm text-base-content/70 mt-1 line-clamp-2">
+      {{ project().descripcionBreve }}
+    </p>
+    <div class="flex flex-wrap gap-1 mt-2">
+      @for (tec of project().tecnologias.slice(0, 4); track tec) {
+        <span class="badge badge-outline badge-xs">{{ tec }}</span>
+      }
+      @if (project().tecnologias.length > 4) {
+        <span class="badge badge-outline badge-xs">+{{ project().tecnologias.length - 4 }}</span>
+      }
+    </div>
+    <div class="card-actions justify-end mt-3">
+      <a
+        [routerLink]="['/proyectos', project().slug]"
+        class="btn btn-primary btn-sm"
+        [attr.aria-label]="'Ver detalle de ' + project().nombre"
+      >
+        Ver detalle
+      </a>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,71 @@
+<nav class="navbar bg-base-100 shadow sticky top-0 z-50" aria-label="Navegación principal">
+  <div class="container mx-auto flex w-full px-4">
+
+    <!-- Mobile hamburger + logo -->
+    <div class="navbar-start">
+      <div class="dropdown">
+        <button
+          tabindex="0"
+          type="button"
+          class="btn btn-ghost lg:hidden"
+          aria-label="Abrir menú de navegación"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+          </svg>
+        </button>
+        <ul
+          tabindex="0"
+          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+          role="menu"
+        >
+          <li role="none"><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" role="menuitem">Inicio</a></li>
+          <li role="none"><a routerLink="/programador/marco-cobos" routerLinkActive="active" role="menuitem">Programador</a></li>
+          <li role="none"><a routerLink="/proyectos" routerLinkActive="active" role="menuitem">Proyectos</a></li>
+          <li role="none"><a routerLink="/solicitud" routerLinkActive="active" role="menuitem">Contacto</a></li>
+          @if (auth.isLoggedIn()) {
+            @if (auth.isProgrammer()) {
+              <li role="none"><a routerLink="/dashboard/programador" routerLinkActive="active" role="menuitem">Dashboard</a></li>
+            } @else {
+              <li role="none"><a routerLink="/dashboard/usuario" routerLinkActive="active" role="menuitem">Mis solicitudes</a></li>
+            }
+          }
+        </ul>
+      </div>
+      <a routerLink="/" class="btn btn-ghost text-xl font-bold" aria-label="Marco Cobos Dev - Inicio">
+        <img ngSrc="/assets/images/profile.jpg" width="32" height="32" alt="Marco Cobos" class="rounded-full object-cover" />
+        <span>Dev</span>
+      </a>
+    </div>
+
+    <!-- Desktop nav links -->
+    <div class="navbar-center hidden lg:flex">
+      <ul class="menu menu-horizontal px-1 gap-1">
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a></li>
+        <li><a routerLink="/programador/marco-cobos" routerLinkActive="active">Programador</a></li>
+        <li><a routerLink="/proyectos" routerLinkActive="active">Proyectos</a></li>
+        <li><a routerLink="/solicitud" routerLinkActive="active">Contacto</a></li>
+        @if (auth.isLoggedIn()) {
+          @if (auth.isProgrammer()) {
+            <li><a routerLink="/dashboard/programador" routerLinkActive="active">Dashboard</a></li>
+          } @else {
+            <li><a routerLink="/dashboard/usuario" routerLinkActive="active">Mis solicitudes</a></li>
+          }
+        }
+      </ul>
+    </div>
+
+    <!-- Auth actions -->
+    <div class="navbar-end gap-2">
+      @if (auth.isLoggedIn()) {
+        <span class="text-sm text-base-content/60 hidden sm:block">{{ auth.user()?.nombre }}</span>
+        <button type="button" class="btn btn-outline btn-sm" (click)="auth.logout()">
+          Salir
+        </button>
+      } @else {
+        <a routerLink="/login" class="btn btn-primary btn-sm">Iniciar sesión</a>
+      }
+    </div>
+
+  </div>
+</nav>
