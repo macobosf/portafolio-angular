@@ -6,7 +6,6 @@ import { PROGRAMADORES, PROJECTS, Project } from '../../core/mock-data';
   selector: 'app-project-detail',
   imports: [RouterLink],
   templateUrl: './project-detail.component.html',
-  styleUrl: './project-detail.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectDetailComponent implements OnInit {

@@ -6,7 +6,6 @@ import { Programmer } from '../../../core/mock-data';
   selector: 'app-programmer-card',
   imports: [RouterLink],
   templateUrl: './programmer-card.component.html',
-  styleUrl: './programmer-card.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProgrammerCardComponent {

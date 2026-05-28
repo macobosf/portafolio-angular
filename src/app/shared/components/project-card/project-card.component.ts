@@ -6,7 +6,6 @@ import { Project } from '../../../core/mock-data';
   selector: 'app-project-card',
   imports: [RouterLink],
   templateUrl: './project-card.component.html',
-  styleUrl: './project-card.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectCardComponent {

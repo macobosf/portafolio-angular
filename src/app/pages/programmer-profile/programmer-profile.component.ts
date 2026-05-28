@@ -7,7 +7,6 @@ import { ProjectCardComponent } from '../../shared/components/project-card/proje
   selector: 'app-programmer-profile',
   imports: [RouterLink, ProjectCardComponent],
   templateUrl: './programmer-profile.component.html',
-  styleUrl: './programmer-profile.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProgrammerProfileComponent implements OnInit {

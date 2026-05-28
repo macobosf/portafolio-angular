@@ -9,7 +9,6 @@ import { ProjectCardComponent } from '../../shared/components/project-card/proje
   selector: 'app-home',
   imports: [RouterLink, ProgrammerCardComponent, ServiceCardComponent, ProjectCardComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {

@@ -8,7 +8,6 @@ import { AuthMockService } from '../../core/auth-mock.service';
   selector: 'app-login',
   imports: [ReactiveFormsModule, RouterLink, NgOptimizedImage],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {

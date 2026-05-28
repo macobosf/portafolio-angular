@@ -7,7 +7,6 @@ import { NgOptimizedImage } from '@angular/common';
   selector: 'app-register',
   imports: [ReactiveFormsModule, RouterLink, NgOptimizedImage],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent {

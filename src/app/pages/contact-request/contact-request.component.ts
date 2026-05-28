@@ -6,7 +6,6 @@ import { PROGRAMADORES } from '../../core/mock-data';
   selector: 'app-contact-request',
   imports: [ReactiveFormsModule],
   templateUrl: './contact-request.component.html',
-  styleUrl: './contact-request.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactRequestComponent {

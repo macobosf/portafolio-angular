@@ -6,7 +6,6 @@ import { NgOptimizedImage } from '@angular/common';
   selector: 'app-footer',
   imports: [RouterLink, NgOptimizedImage],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {

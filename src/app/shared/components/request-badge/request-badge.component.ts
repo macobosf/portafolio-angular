@@ -4,7 +4,6 @@ import { Component, ChangeDetectionStrategy, input, computed } from '@angular/co
   selector: 'app-request-badge',
   imports: [],
   templateUrl: './request-badge.component.html',
-  styleUrl: './request-badge.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RequestBadgeComponent {

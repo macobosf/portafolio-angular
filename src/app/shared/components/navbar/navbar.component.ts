@@ -7,7 +7,6 @@ import { AuthMockService } from '../../../core/auth-mock.service';
   selector: 'app-navbar',
   imports: [RouterLink, RouterLinkActive, NgOptimizedImage],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent {

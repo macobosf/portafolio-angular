@@ -8,7 +8,6 @@ type FilterType = 'todos' | 'academico' | 'personal' | 'laboral' | 'simulado';
   selector: 'app-projects',
   imports: [ProjectCardComponent],
   templateUrl: './projects.component.html',
-  styleUrl: './projects.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsComponent {

@@ -5,7 +5,6 @@ import { Service } from '../../../core/mock-data';
   selector: 'app-service-card',
   imports: [],
   templateUrl: './service-card.component.html',
-  styleUrl: './service-card.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ServiceCardComponent {

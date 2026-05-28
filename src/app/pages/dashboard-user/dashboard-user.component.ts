@@ -8,7 +8,6 @@ import { RequestBadgeComponent } from '../../shared/components/request-badge/req
   selector: 'app-dashboard-user',
   imports: [RouterLink, RequestBadgeComponent],
   templateUrl: './dashboard-user.component.html',
-  styleUrl: './dashboard-user.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardUserComponent {
