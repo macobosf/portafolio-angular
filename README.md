@@ -1,59 +1,55 @@
-# Portafolio
+# Portafolio Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.9.
+Este es mi portafolio profesional, construido con Angular 21. La idea era tener un lugar propio donde mostrar mis proyectos reales, mi perfil y los servicios que ofrezco, sin depender de plantillas genéricas ni plataformas de terceros.
 
-## Development server
+## ¿Qué tiene hasta ahora?
 
-To start a local development server, run:
+La aplicación está estructurada como un SPA completo con varias páginas:
 
-```bash
-ng serve
+- **Inicio** — presentación general con servicios ofrecidos y proyectos destacados
+- **Perfil de programador** — página pública con bio, tecnologías y proyectos
+- **Proyectos** — listado completo con filtros por tipo (personal, académico, laboral)
+- **Detalle de proyecto** — vista individual con descripción, tecnologías y link al repo
+- **Contacto** — formulario de solicitud de servicios
+- **Login y registro** — autenticación simulada con roles (programador / usuario)
+- **Dashboard de programador** — gestión de solicitudes recibidas
+- **Dashboard de usuario** — seguimiento de solicitudes enviadas
+
+Los proyectos que aparecen son los reales de mi GitHub ([macobosf](https://github.com/macobosf)), no datos de relleno.
+
+## Stack
+
+- **Angular 21** — componentes standalone, signals, lazy loading, OnPush
+- **TailwindCSS v4** + **DaisyUI v5** — para los estilos y componentes UI
+- **TypeScript** en modo estricto
+- **Reactive Forms** para los formularios
+
+## Estructura del proyecto
+
+```
+src/
+├── app/
+│   ├── core/          # Servicios y datos mock
+│   ├── pages/         # Páginas de la aplicación
+│   └── shared/        # Componentes reutilizables (navbar, footer, cards)
+└── styles.css
+public/
+└── assets/images/     # Foto de perfil y recursos estáticos
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Correr el proyecto localmente
 
 ```bash
-ng generate component component-name
+pnpm install
+pnpm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Abre [http://localhost:4200](http://localhost:4200) en el navegador.
 
-```bash
-ng generate --help
-```
+## Estado actual
 
-## Building
+El proyecto usa datos locales (mock) mientras no hay un backend conectado. La autenticación es simulada y permite probar los dos roles disponibles directamente desde la pantalla de login.
 
-To build the project run:
+---
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Hecho con Angular y muchas ganas de tener algo propio en internet.
