@@ -13,6 +13,7 @@ export interface AuthUser {
 export class AuthMockService {
   private readonly _user = signal<AuthUser | null>(null);
 
+  // asReadonly expone el signal sin permisos de escritura; solo este servicio puede mutar el estado de sesión
   readonly user = this._user.asReadonly();
   readonly isLoggedIn = computed(() => this._user() !== null);
   readonly isProgrammer = computed(() => this._user()?.rol === 'programmer');

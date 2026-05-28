@@ -21,8 +21,8 @@ export interface Project {
   tecnologias: string[];
   repoUrl: string;
   demoUrl: string;
-  destacado: boolean;
-  programadorIds: string[];
+  destacado: boolean;      // true → aparece en el hero del home; false → solo en la lista completa
+  programadorIds: string[]; // permite vincular un proyecto a múltiples programadores
 }
 
 export interface Service {
