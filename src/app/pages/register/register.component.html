@@ -1,0 +1,133 @@
+<div class="min-h-[calc(100vh-64px)] bg-base-200 flex items-center justify-center px-4 py-12">
+  <div class="card bg-base-100 shadow-xl w-full max-w-md">
+    <div class="card-body gap-5">
+
+      <!-- Logo -->
+      <div class="text-center">
+        <div class="flex items-center justify-center gap-2">
+          <img ngSrc="/assets/images/profile.jpg" width="48" height="48" alt="Marco Cobos" class="rounded-full object-cover" />
+          <span class="text-3xl font-bold">Dev</span>
+        </div>
+        <h1 class="text-xl font-semibold mt-2">Crear cuenta</h1>
+        <p class="text-sm text-base-content/60">Registro para usuarios externos</p>
+      </div>
+
+      <!-- Error -->
+      @if (errorMessage()) {
+        <div class="alert alert-error" role="alert">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>{{ errorMessage() }}</span>
+        </div>
+      }
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+        <div class="flex flex-col gap-4">
+
+          <div class="form-control">
+            <label class="label" for="reg-nombre">
+              <span class="label-text font-medium">Nombre completo</span>
+            </label>
+            <input
+              id="reg-nombre"
+              type="text"
+              formControlName="nombre"
+              class="input input-bordered"
+              [class.input-error]="form.get('nombre')?.invalid && form.get('nombre')?.touched"
+              placeholder="Tu nombre"
+              autocomplete="name"
+              aria-required="true"
+            />
+            @if (form.get('nombre')?.invalid && form.get('nombre')?.touched) {
+              <label class="label">
+                <span class="label-text-alt text-error" role="alert">Mínimo 3 caracteres</span>
+              </label>
+            }
+          </div>
+
+          <div class="form-control">
+            <label class="label" for="reg-email">
+              <span class="label-text font-medium">Correo electrónico</span>
+            </label>
+            <input
+              id="reg-email"
+              type="email"
+              formControlName="email"
+              class="input input-bordered"
+              [class.input-error]="form.get('email')?.invalid && form.get('email')?.touched"
+              placeholder="tu@correo.com"
+              autocomplete="email"
+              aria-required="true"
+            />
+            @if (form.get('email')?.invalid && form.get('email')?.touched) {
+              <label class="label">
+                <span class="label-text-alt text-error" role="alert">Ingresa un correo válido</span>
+              </label>
+            }
+          </div>
+
+          <div class="form-control">
+            <label class="label" for="reg-password">
+              <span class="label-text font-medium">Contraseña</span>
+            </label>
+            <input
+              id="reg-password"
+              type="password"
+              formControlName="password"
+              class="input input-bordered"
+              [class.input-error]="form.get('password')?.invalid && form.get('password')?.touched"
+              placeholder="••••••••"
+              autocomplete="new-password"
+              aria-required="true"
+            />
+            @if (form.get('password')?.invalid && form.get('password')?.touched) {
+              <label class="label">
+                <span class="label-text-alt text-error" role="alert">Mínimo 6 caracteres</span>
+              </label>
+            }
+          </div>
+
+          <div class="form-control">
+            <label class="label" for="reg-confirm">
+              <span class="label-text font-medium">Confirmar contraseña</span>
+            </label>
+            <input
+              id="reg-confirm"
+              type="password"
+              formControlName="confirmPassword"
+              class="input input-bordered"
+              [class.input-error]="(form.get('confirmPassword')?.touched && form.hasError('passwordMismatch'))"
+              placeholder="••••••••"
+              autocomplete="new-password"
+              aria-required="true"
+            />
+            @if (form.get('confirmPassword')?.touched && form.hasError('passwordMismatch')) {
+              <label class="label">
+                <span class="label-text-alt text-error" role="alert">Las contraseñas no coinciden</span>
+              </label>
+            }
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary w-full mt-1"
+            [disabled]="form.invalid || submitting()"
+          >
+            @if (submitting()) {
+              <span class="loading loading-spinner loading-sm" aria-hidden="true"></span>
+            }
+            Crear cuenta
+          </button>
+
+        </div>
+      </form>
+
+      <p class="text-center text-sm text-base-content/60">
+        ¿Ya tienes cuenta?
+        <a routerLink="/login" class="link link-primary font-medium">Inicia sesión</a>
+      </p>
+
+    </div>
+  </div>
+</div>
