@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { AuthService } from '../../../core/auth.service';
 
@@ -11,4 +11,10 @@ import { AuthService } from '../../../core/auth.service';
 })
 export class NavbarComponent {
   protected readonly auth = inject(AuthService);
+  private readonly router = inject(Router);
+
+  protected async logout(): Promise<void> {
+    await this.auth.logout();
+    this.router.navigate(['/']);
+  }
 }

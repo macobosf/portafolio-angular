@@ -59,7 +59,7 @@
     <div class="navbar-end gap-2">
       @if (auth.isAuthenticated()) {
         <span class="text-sm text-base-content/60 hidden sm:block">{{ auth.userName() }}</span>
-        <button type="button" class="btn btn-outline btn-sm" (click)="auth.logout()">
+        <button type="button" class="btn btn-outline btn-sm" (click)="logout()">
           Salir
         </button>
       } @else {
