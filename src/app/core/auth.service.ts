@@ -43,6 +43,7 @@ export class AuthService {
 
   constructor() {
     onAuthStateChanged(this.authInstance, async (user) => {
+      this.isLoading.set(true);
       this.currentUser.set(user);
       try {
         if (user) {
@@ -53,21 +54,27 @@ export class AuthService {
           const snap = await getDocs(q);
           if (!snap.empty) {
             this._isProgrammerUser.set(true);
-            this._programadorId.set(snap.docs[0].data()['id'] as string);
-          } else {
-            this._isProgrammerUser.set(false);
-            this._programadorId.set(null);
-          }
-          const userDoc = await getDoc(doc(this.db, 'usuarios', user.uid));
-          if (userDoc.exists()) {
+            this._programadorId.set(snap.docs[0].id);
             this._userName.set(
-              (userDoc.data()['nombre'] as string) ||
+              (snap.docs[0].data()['nombre'] as string) ||
                 user.displayName ||
                 user.email ||
                 '',
             );
           } else {
-            this._userName.set(user.displayName || user.email || '');
+            this._isProgrammerUser.set(false);
+            this._programadorId.set(null);
+            const userDoc = await getDoc(doc(this.db, 'usuarios', user.uid));
+            if (userDoc.exists()) {
+              this._userName.set(
+                (userDoc.data()['nombre'] as string) ||
+                  user.displayName ||
+                  user.email ||
+                  '',
+              );
+            } else {
+              this._userName.set(user.displayName || user.email || '');
+            }
           }
         } else {
           this._isProgrammerUser.set(false);

@@ -50,6 +50,21 @@ export class RegisterComponent {
   protected readonly submitted = signal(false);
   protected readonly submitting = signal(false);
   protected readonly errorMessage = signal<string | null>(null);
+  protected readonly showPassword = signal(false);
+  protected readonly showConfirmPassword = signal(false);
+  protected readonly capsLockOn = signal(false);
+
+  protected togglePassword(): void {
+    this.showPassword.update(v => !v);
+  }
+
+  protected toggleConfirmPassword(): void {
+    this.showConfirmPassword.update(v => !v);
+  }
+
+  protected checkCapsLock(event: KeyboardEvent | MouseEvent): void {
+    this.capsLockOn.set(event.getModifierState('CapsLock'));
+  }
 
   protected readonly form = this.fb.group(
     {
