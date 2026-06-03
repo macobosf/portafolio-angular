@@ -7,10 +7,10 @@ import { Component, ChangeDetectionStrategy, input, computed } from '@angular/co
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RequestBadgeComponent {
-  readonly estado = input.required<'Pendiente' | 'Respondida'>();
+  readonly estado = input.required<'Pendiente' | 'Atendida'>();
 
   protected readonly badgeClass = computed(() =>
-    this.estado() === 'Respondida'
+    this.estado() === 'Atendida'
       ? 'badge badge-success gap-1'
       : 'badge badge-warning gap-1',
   );

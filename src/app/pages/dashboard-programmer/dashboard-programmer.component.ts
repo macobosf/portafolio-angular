@@ -40,14 +40,14 @@ export class DashboardProgrammerComponent {
     () => this.requests().filter((r) => r.estado === 'Pendiente').length,
   );
   protected readonly respondedCount = computed(
-    () => this.requests().filter((r) => r.estado === 'Respondida').length,
+    () => this.requests().filter((r) => r.estado === 'Atendida').length,
   );
 
   protected readonly selectedRequest = signal<ContactRequest | null>(null);
   protected readonly saving = signal(false);
 
   protected readonly updateForm = this.fb.group({
-    estado: ['Pendiente' as 'Pendiente' | 'Respondida'],
+    estado: ['Pendiente' as 'Pendiente' | 'Atendida'],
     observacion: [''],
   });
 
@@ -69,7 +69,7 @@ export class DashboardProgrammerComponent {
     this.saving.set(true);
     try {
       await this.firestoreService.actualizarSolicitud(req.id, {
-        estado: this.updateForm.value.estado as 'Pendiente' | 'Respondida',
+        estado: this.updateForm.value.estado as 'Pendiente' | 'Atendida',
         observacion: this.updateForm.value.observacion ?? '',
       });
       this.closeDetail();

@@ -42,7 +42,7 @@ export interface ContactRequest {
   programadorId: string;
   programadorEmail: string;
   fechaCreacion: string;
-  estado: 'Pendiente' | 'Respondida';
+  estado: 'Pendiente' | 'Atendida';
   observacion: string;
 }
 
@@ -212,7 +212,7 @@ export const CONTACT_REQUESTS: ContactRequest[] = [
     programadorId: '1',
     programadorEmail: 'marcocobos15@gmail.com',
     fechaCreacion: '2026-05-15',
-    estado: 'Respondida',
+    estado: 'Atendida',
     observacion:
       'Agendamos reunión para el martes a las 10am para revisar los requerimientos técnicos.',
   },
