@@ -6,7 +6,7 @@ import {
   effect,
 } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink, Router } from '@angular/router';
+import { RouterLink, Router, ActivatedRoute } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { AuthService } from '../../core/auth.service';
 
@@ -38,6 +38,7 @@ export class LoginComponent {
   private readonly fb = inject(FormBuilder);
   protected readonly auth = inject(AuthService);
   private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
 
   protected readonly form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -50,7 +51,10 @@ export class LoginComponent {
   constructor() {
     effect(() => {
       if (!this.auth.isLoading() && this.auth.isAuthenticated()) {
-        if (this.auth.isProgrammer()) {
+        const redirect = this.route.snapshot.queryParamMap.get('redirect');
+        if (redirect) {
+          this.router.navigateByUrl(redirect);
+        } else if (this.auth.isProgrammer()) {
           this.router.navigate(['/dashboard/programador']);
         } else {
           this.router.navigate(['/dashboard/usuario']);

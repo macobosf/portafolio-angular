@@ -1,3 +1,40 @@
+@if (!auth.isAuthenticated()) {
+  <div class="min-h-[calc(100vh-64px)] bg-base-200 flex items-center justify-center px-4">
+    <div class="card bg-base-100 shadow-xl w-full max-w-sm">
+      <div class="card-body items-center text-center gap-5">
+
+        <div class="text-primary">
+          <svg class="w-14 h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold mb-1">Acceso requerido</h2>
+          <p class="text-base-content/60 text-sm">
+            Para enviar una solicitud de contacto necesitas tener una cuenta.
+          </p>
+        </div>
+
+        <div class="flex flex-col w-full gap-2">
+          <a
+            routerLink="/login"
+            [queryParams]="{redirect: '/solicitud'}"
+            class="btn btn-primary w-full"
+          >
+            Iniciar sesión
+          </a>
+          <a routerLink="/registro" class="btn btn-outline w-full">
+            Crear cuenta
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+} @else {
+
 <div class="min-h-[calc(100vh-64px)] bg-base-200 py-12 px-4">
   <div class="container mx-auto max-w-2xl">
 
@@ -181,3 +218,5 @@
 
   </div>
 </div>
+
+}

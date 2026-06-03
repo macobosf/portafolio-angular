@@ -44,7 +44,6 @@ export const routes: Routes = [
   },
   {
     path: 'solicitud',
-    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/contact-request/contact-request.component').then(
         (m) => m.ContactRequestComponent,

@@ -5,19 +5,20 @@ import {
   signal,
 } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { AuthService } from '../../core/auth.service';
 import { FirestoreService } from '../../core/firestore.service';
 import { PROGRAMADORES } from '../../core/mock-data';
 
 @Component({
   selector: 'app-contact-request',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './contact-request.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactRequestComponent {
   private readonly fb = inject(FormBuilder);
-  private readonly auth = inject(AuthService);
+  protected readonly auth = inject(AuthService);
   private readonly firestoreService = inject(FirestoreService);
 
   protected readonly programadores = PROGRAMADORES;
