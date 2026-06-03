@@ -17,6 +17,19 @@ export const authGuard: CanActivateFn = () => {
   );
 };
 
+export const noAuthGuard: CanActivateFn = () => {
+  const auth = inject(AuthService);
+  const router = inject(Router);
+
+  return toObservable(auth.isLoading).pipe(
+    filter((loading) => !loading),
+    take(1),
+    map(() =>
+      auth.isAuthenticated() ? router.createUrlTree(['/']) : true,
+    ),
+  );
+};
+
 export const programmerGuard: CanActivateFn = () => {
   const auth = inject(AuthService);
   const router = inject(Router);

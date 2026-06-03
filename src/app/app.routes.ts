@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { authGuard, programmerGuard } from './core/auth.guard';
+import { authGuard, noAuthGuard, programmerGuard } from './core/auth.guard';
 
 export const routes: Routes = [
   {
@@ -30,11 +30,13 @@ export const routes: Routes = [
   },
   {
     path: 'login',
+    canActivate: [noAuthGuard],
     loadComponent: () =>
       import('./pages/login/login.component').then((m) => m.LoginComponent),
   },
   {
     path: 'registro',
+    canActivate: [noAuthGuard],
     loadComponent: () =>
       import('./pages/register/register.component').then(
         (m) => m.RegisterComponent,
