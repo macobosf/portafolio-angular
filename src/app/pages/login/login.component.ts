@@ -3,7 +3,6 @@ import {
   ChangeDetectionStrategy,
   inject,
   signal,
-  effect,
 } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink, Router, ActivatedRoute } from '@angular/router';
@@ -48,19 +47,15 @@ export class LoginComponent {
   protected readonly submitting = signal(false);
   protected readonly errorMessage = signal<string | null>(null);
 
-  constructor() {
-    effect(() => {
-      if (!this.auth.isLoading() && this.auth.isAuthenticated()) {
-        const redirect = this.route.snapshot.queryParamMap.get('redirect');
-        if (redirect) {
-          this.router.navigateByUrl(redirect);
-        } else if (this.auth.isProgrammer()) {
-          this.router.navigate(['/dashboard/programador']);
-        } else {
-          this.router.navigate(['/dashboard/usuario']);
-        }
-      }
-    });
+  private navigateAfterLogin(): void {
+    const redirect = this.route.snapshot.queryParamMap.get('redirect');
+    if (redirect) {
+      this.router.navigateByUrl(redirect);
+    } else if (this.auth.isProgrammer()) {
+      this.router.navigate(['/dashboard/programador']);
+    } else {
+      this.router.navigate(['/dashboard/usuario']);
+    }
   }
 
   protected async onSubmit(): Promise<void> {
@@ -72,6 +67,7 @@ export class LoginComponent {
         this.form.value.email!,
         this.form.value.password!,
       );
+      this.navigateAfterLogin();
     } catch (e) {
       this.errorMessage.set(parseFirebaseError(e));
       this.submitting.set(false);
@@ -82,6 +78,7 @@ export class LoginComponent {
     this.errorMessage.set(null);
     try {
       await this.auth.loginWithGoogle();
+      this.navigateAfterLogin();
     } catch (e) {
       this.errorMessage.set(parseFirebaseError(e));
     }
