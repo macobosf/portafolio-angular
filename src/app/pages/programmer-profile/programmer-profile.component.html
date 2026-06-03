@@ -1,7 +1,7 @@
 @if (programmer(); as dev) {
 
   <!-- Banner -->
-  <div class="bg-gradient-to-br from-blue-900 via-blue-700 to-blue-600 py-16 px-4">
+  <div class="bg-gradient-to-br from-blue-900 via-blue-700 to-blue-600 py-16 px-4" appFadeIn>
     <div class="container mx-auto flex flex-col md:flex-row items-center gap-8">
       <div class="avatar">
         <div class="w-32 md:w-40 rounded-full ring ring-white/30 ring-offset-2 ring-offset-blue-800 shadow-xl">
@@ -50,7 +50,7 @@
   </div>
 
   <!-- Contenido principal -->
-  <div class="container mx-auto px-4 py-10">
+  <div class="container mx-auto px-4 py-10" appFadeIn>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
       <!-- Columna izquierda: bio + habilidades -->
@@ -66,15 +66,9 @@
           <div class="card-body">
             <h2 class="card-title text-lg">Tecnologías</h2>
             <div class="flex flex-wrap gap-2 mt-1">
-              <span class="badge badge-primary">Angular</span>
-              <span class="badge badge-primary">TypeScript</span>
-              <span class="badge badge-primary">Node.js</span>
-              <span class="badge badge-secondary">Mikrotik</span>
-              <span class="badge badge-secondary">Cisco</span>
-              <span class="badge badge-secondary">VLAN / VPN</span>
-              <span class="badge badge-outline">TailwindCSS</span>
-              <span class="badge badge-outline">PostgreSQL</span>
-              <span class="badge badge-outline">Git</span>
+              @for (tech of dev.tecnologias; track tech) {
+                <span class="badge badge-outline">{{ tech }}</span>
+              }
             </div>
           </div>
         </div>
@@ -115,6 +109,8 @@
     </div>
   </div>
 
+} @else if (programmer() === undefined) {
+  <app-loading-spinner />
 } @else {
   <div class="container mx-auto px-4 py-20 text-center">
     <div class="alert alert-warning max-w-sm mx-auto">

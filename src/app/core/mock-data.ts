@@ -3,12 +3,14 @@ export interface Programmer {
   nombre: string;
   email: string;
   especialidad: string;
+  descripcionBreve?: string;
   descripcion: string;
   foto: string;
   github: string;
   linkedin: string;
   activo: boolean;
   slug: string;
+  tecnologias: string[];
 }
 
 export interface Project {
@@ -17,7 +19,6 @@ export interface Project {
   slug: string;
   descripcionBreve: string;
   descripcionCompleta: string;
-  imagen: string;
   tipo: 'academico' | 'personal' | 'laboral' | 'simulado';
   tecnologias: string[];
   repoUrl: string;
@@ -49,16 +50,32 @@ export interface ContactRequest {
 export const PROGRAMADORES: Programmer[] = [
   {
     id: '1',
-    nombre: 'Marco Cobos',
+    nombre: 'Marco Antonio Cobos Farfán',
     email: 'marcocobos15@gmail.com',
     especialidad: 'Redes Mikrotik/Cisco & Desarrollo Web',
     descripcion:
       'Especialista en infraestructura de redes con experiencia en Mikrotik y Cisco, y desarrollador web full-stack con Angular y TypeScript. Combino el mundo de las redes con el desarrollo para ofrecer soluciones tecnológicas integrales a empresas y proyectos personales.',
-    foto: '/assets/images/profile.jpg',
+    foto: 'https://ui-avatars.com/api/?name=Marco+Cobos&background=1d4ed8&color=fff&size=200',
     github: 'https://github.com/macobosf',
     linkedin: 'https://linkedin.com/in/marcocobos',
     activo: true,
     slug: 'marco-cobos',
+    tecnologias: ['Mikrotik', 'Cisco', 'Angular', 'Node.js', 'TypeScript', 'PostgreSQL', 'Linux', 'VLAN/VPN', 'OSPF/BGP', 'Firewall'],
+  },
+  {
+    id: '2',
+    nombre: 'Christian Ismael Astudillo Vásquez',
+    email: 'christian.astudillo@gmail.com',
+    especialidad: 'Sistemas, Desarrollo Web y Java',
+    descripcionBreve: 'Desarrollador especializado en sistemas, desarrollo web y Java',
+    descripcion:
+      'Profesional con experiencia en desarrollo de sistemas empresariales, aplicaciones web y desarrollo backend con Java. Apasionado por crear soluciones robustas y escalables.',
+    foto: 'https://ui-avatars.com/api/?name=Christian+Astudillo&background=1d4ed8&color=fff&size=200',
+    github: 'https://github.com/chris-astu',
+    linkedin: 'https://linkedin.com/in/chris-astu',
+    activo: true,
+    slug: 'christian-astudillo',
+    tecnologias: ['Java', 'Spring Boot', 'HTML', 'CSS', 'JavaScript', 'MySQL', 'Git', 'Bootstrap', 'JPA', 'Maven'],
   },
 ];
 
@@ -71,7 +88,6 @@ export const PROJECTS: Project[] = [
       'Colección de proyectos web desarrollados con Angular, incluyendo aplicaciones con Angular 21.',
     descripcionCompleta:
       'Repositorio con múltiples proyectos Angular: una aplicación generada con PPW y una aplicación con Angular 21 que explora las últimas características del framework como signals, componentes standalone, control flow nativo y lazy loading de rutas.',
-    imagen: 'https://placehold.co/800x450/dd0031/ffffff?text=Angular',
     tipo: 'personal',
     tecnologias: ['Angular', 'Angular 21', 'TypeScript', 'HTML', 'CSS'],
     repoUrl: 'https://github.com/macobosf/Angular',
@@ -87,7 +103,6 @@ export const PROJECTS: Project[] = [
       'Tienda en línea desarrollada con React y TypeScript como práctica de desarrollo frontend.',
     descripcionCompleta:
       'Aplicación de e-commerce construida con React y TypeScript. Implementa manejo de estado, listado de productos, carrito de compras y navegación entre vistas. Proyecto orientado a consolidar el uso de hooks, componentes funcionales y buenas prácticas de React moderno.',
-    imagen: 'https://placehold.co/800x450/61dafb/0f172a?text=React+Store',
     tipo: 'personal',
     tecnologias: ['React', 'TypeScript', 'HTML', 'CSS'],
     repoUrl: 'https://github.com/macobosf/React',
@@ -103,7 +118,6 @@ export const PROJECTS: Project[] = [
       'Sitio web educativo tipo campus virtual construido con el framework Astro.',
     descripcionCompleta:
       'Proyecto de sitio web estático con arquitectura de islas construido con Astro. Diseñado como plataforma tipo campus educativo, aprovecha la generación estática de Astro para lograr excelente rendimiento y SEO. Explora el modelo de componentes de Astro y su integración con otros frameworks.',
-    imagen: 'https://placehold.co/800x450/ff5d01/ffffff?text=Astro+Campus',
     tipo: 'personal',
     tecnologias: ['Astro', 'HTML', 'CSS', 'JavaScript'],
     repoUrl: 'https://github.com/macobosf/Astro',
@@ -119,7 +133,6 @@ export const PROJECTS: Project[] = [
       'Prácticas progresivas de JavaScript: sintaxis, DOM, eventos, asincronía y más.',
     descripcionCompleta:
       'Repositorio de prácticas organizadas por tema para aprender JavaScript desde sus fundamentos. Cubre sintaxis básica, manipulación del DOM, manejo de eventos, programación asíncrona con Promises y async/await, y ejercicios avanzados. Estructura pensada para el aprendizaje incremental.',
-    imagen: 'https://placehold.co/800x450/f7df1e/0f172a?text=JavaScript',
     tipo: 'academico',
     tecnologias: ['JavaScript', 'HTML', 'CSS', 'DOM API'],
     repoUrl: 'https://github.com/macobosf/JavaScript',
@@ -135,7 +148,6 @@ export const PROJECTS: Project[] = [
       'Sistema web para gestión de biblioteca: registro de libros, préstamos y devoluciones en PHP.',
     descripcionCompleta:
       'Proyecto final académico: sistema completo de gestión de biblioteca desarrollado en PHP con MySQL. Incluye módulos para registro de libros, control de préstamos, renovaciones, historial de usuarios y motor de búsqueda. Arquitectura MVC básica con separación de conexiones y vistas.',
-    imagen: 'https://placehold.co/800x450/7c3aed/ffffff?text=Biblioteca+PHP',
     tipo: 'academico',
     tecnologias: ['PHP', 'MySQL', 'HTML', 'CSS'],
     repoUrl: 'https://github.com/macobosf/Proyecto_Final',
@@ -151,7 +163,6 @@ export const PROJECTS: Project[] = [
       'Aplicación Java EE para gestión de parqueadero con JakartaEE, JPA y despliegue en WildFly.',
     descripcionCompleta:
       'Sistema de gestión de parqueadero desarrollado con Jakarta EE sobre servidor WildFly. Utiliza JPA para la persistencia de datos con una unidad de persistencia propia. Construido con Maven e incluye configuración de datasource para entornos de producción. Proyecto académico de arquitectura empresarial Java.',
-    imagen: 'https://placehold.co/800x450/b45309/ffffff?text=Parqueadero+JEE',
     tipo: 'academico',
     tecnologias: ['Java EE', 'JakartaEE', 'JPA', 'WildFly', 'Maven'],
     repoUrl: 'https://github.com/macobosf/Parqueadero',
@@ -167,13 +178,87 @@ export const PROJECTS: Project[] = [
       'Práctica de integración con servicios cloud mediante consumo de APIs REST con JavaScript.',
     descripcionCompleta:
       'Proyecto académico enfocado en el consumo de APIs alojadas en la nube utilizando JavaScript. Explora peticiones HTTP, manejo de respuestas JSON, autenticación con tokens y visualización de datos provenientes de servicios externos. Introducción práctica a la integración con plataformas cloud.',
-    imagen: 'https://placehold.co/800x450/0ea5e9/ffffff?text=APIs+en+la+Nube',
     tipo: 'academico',
     tecnologias: ['JavaScript', 'REST API', 'JSON', 'Cloud'],
     repoUrl: 'https://github.com/macobosf/Practica01-Consumo-de-APIs-en-la-nube',
     demoUrl: '',
     destacado: false,
     programadorIds: ['1'],
+  },
+  {
+    id: '8',
+    nombre: 'QoS Network Dashboard',
+    slug: 'qos-network-dashboard',
+    descripcionBreve:
+      'Dashboard web para visualización de métricas de calidad de servicio (QoS) en redes.',
+    descripcionCompleta:
+      'Proyecto web que implementa un dashboard interactivo para monitorear y visualizar métricas de calidad de servicio en infraestructuras de red. Permite representar datos de latencia, ancho de banda y priorización de tráfico mediante una interfaz construida con HTML, CSS y JavaScript.',
+    tipo: 'academico',
+    tecnologias: ['HTML', 'CSS', 'JavaScript'],
+    repoUrl: 'https://github.com/christianastudillo/qos-network-dashboard',
+    demoUrl: '',
+    destacado: true,
+    programadorIds: ['2'],
+  },
+  {
+    id: '9',
+    nombre: 'Angular App — ICC PPW',
+    slug: 'icc-ppw-angular',
+    descripcionBreve:
+      'Aplicación web desarrollada con Angular y TypeScript en el curso de Programación Web.',
+    descripcionCompleta:
+      'Proyecto académico del curso ICC de Programación para la Web. Desarrollado con Angular y TypeScript, explora componentes standalone, routing, servicios e integración con APIs. Demuestra el dominio del ecosistema Angular moderno.',
+    tipo: 'academico',
+    tecnologias: ['Angular', 'TypeScript', 'HTML', 'CSS'],
+    repoUrl: 'https://github.com/christianastudillo/icc-ppw-angular',
+    demoUrl: '',
+    destacado: true,
+    programadorIds: ['2'],
+  },
+  {
+    id: '10',
+    nombre: 'React App — ICC PPW',
+    slug: 'icc-ppw-react',
+    descripcionBreve:
+      'Aplicación web con React y TypeScript del curso de Programación Web.',
+    descripcionCompleta:
+      'Proyecto académico del curso ICC PPW construido con React y TypeScript. Implementa componentes funcionales, hooks y manejo de estado para una aplicación web interactiva. Parte de una serie que cubre múltiples frameworks modernos.',
+    tipo: 'academico',
+    tecnologias: ['React', 'TypeScript', 'HTML', 'CSS'],
+    repoUrl: 'https://github.com/christianastudillo/icc-ppw-react',
+    demoUrl: '',
+    destacado: false,
+    programadorIds: ['2'],
+  },
+  {
+    id: '11',
+    nombre: 'Astro Web Site — ICC PPW',
+    slug: 'icc-ppw-astro',
+    descripcionBreve:
+      'Sitio web estático de alto rendimiento construido con el framework Astro.',
+    descripcionCompleta:
+      'Proyecto académico del curso ICC PPW que explora el framework Astro para sitios web estáticos. Aprovecha la arquitectura de islas y la generación estática para conseguir excelente rendimiento y SEO, integrando múltiples tecnologías web.',
+    tipo: 'academico',
+    tecnologias: ['Astro', 'HTML', 'CSS', 'JavaScript'],
+    repoUrl: 'https://github.com/christianastudillo/icc-ppw-astro',
+    demoUrl: '',
+    destacado: false,
+    programadorIds: ['2'],
+  },
+  {
+    id: '12',
+    nombre: 'Estructuras de Datos No Lineales',
+    slug: 'estructuras-datos-no-lineales',
+    descripcionBreve:
+      'Implementación de estructuras no lineales en Java: árboles, grafos y mapas.',
+    descripcionCompleta:
+      'Proyecto académico del curso ICC de Estructuras de Datos que implementa y analiza estructuras no lineales en Java. Cubre árboles binarios de búsqueda, grafos dirigidos, mapas y sus aplicaciones en algoritmos de recorrido y búsqueda eficiente.',
+    tipo: 'academico',
+    tecnologias: ['Java'],
+    repoUrl: 'https://github.com/christianastudillo/icc-est-u2-estructurasNoLineales',
+    demoUrl: '',
+    destacado: false,
+    programadorIds: ['2'],
   },
 ];
 

@@ -1,12 +1,13 @@
 import { Component, ChangeDetectionStrategy, signal, computed } from '@angular/core';
 import { PROJECTS } from '../../core/mock-data';
 import { ProjectCardComponent } from '../../shared/components/project-card/project-card.component';
+import { FadeInDirective } from '../../shared/directives/fade-in.directive';
 
 type FilterType = 'todos' | 'academico' | 'personal' | 'laboral' | 'simulado';
 
 @Component({
   selector: 'app-projects',
-  imports: [ProjectCardComponent],
+  imports: [ProjectCardComponent, FadeInDirective],
   templateUrl: './projects.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

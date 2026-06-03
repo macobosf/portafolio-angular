@@ -2,11 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-footer',
+  selector: 'app-not-found',
   imports: [RouterLink],
-  templateUrl: './footer.component.html',
+  templateUrl: './not-found.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FooterComponent {
-  protected readonly year = 2026;
-}
+export class NotFoundComponent {}

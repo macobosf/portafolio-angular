@@ -12,7 +12,7 @@ import {
   ValidationErrors,
 } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
-import { NgOptimizedImage } from '@angular/common';
+
 import { AuthService } from '../../core/auth.service';
 
 function passwordMatchValidator(
@@ -38,7 +38,7 @@ function parseFirebaseError(error: unknown): string {
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, RouterLink, NgOptimizedImage],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './register.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink, Router, ActivatedRoute } from '@angular/router';
-import { NgOptimizedImage } from '@angular/common';
 import { AuthService } from '../../core/auth.service';
 
 function parseFirebaseError(error: unknown): string {
@@ -31,7 +30,7 @@ function parseFirebaseError(error: unknown): string {
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink, NgOptimizedImage],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
