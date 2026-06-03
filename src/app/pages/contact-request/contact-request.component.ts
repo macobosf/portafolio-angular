@@ -5,7 +5,7 @@ import {
   signal,
 } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { AuthService } from '../../core/auth.service';
 import { FirestoreService } from '../../core/firestore.service';
 import { PROGRAMADORES } from '../../core/mock-data';
@@ -19,6 +19,14 @@ import { PROGRAMADORES } from '../../core/mock-data';
 export class ContactRequestComponent {
   private readonly fb = inject(FormBuilder);
   protected readonly auth = inject(AuthService);
+  private readonly router = inject(Router);
+
+  constructor() {
+    if (this.auth.isProgrammer()) {
+      this.router.navigate(['/dashboard/programador']);
+      return;
+    }
+  }
   private readonly firestoreService = inject(FirestoreService);
 
   protected readonly programadores = PROGRAMADORES;
